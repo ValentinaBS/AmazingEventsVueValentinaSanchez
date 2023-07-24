@@ -37,6 +37,10 @@ img {
     transform: translateZ(0);
 }
 
+[v-cloak] {
+    display: none;
+}
+
 .bi-list {
     color: var(--main);
     font-size: 2rem;

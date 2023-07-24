@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <nav class="navbar navbar-expand-md navbar-dark px-4">
             <a class="navbar-brand" href="../../index.html">
                 <img class="nav-img" src="../images/amazing_brand.png" alt="Amazing Events logo">
@@ -82,12 +82,14 @@
                         <th scope="col" class="col-width">Percentage of assistance</th>
                     </tr>
                 </thead>
-                <tbody v-for="eventCategory of unifiedUpcomingEvents" class="text-center">
-                    <tr>
-                        <td>{{eventCategory.category}}</td>
-                        <td>${{(eventCategory.price * eventCategory.assistance).toLocaleString("en-EN")}}</td>
-                        <td>{{(eventCategory.assistance / eventCategory.capacity * 100).toFixed(2)}}%</td>
-                    </tr>
+                <tbody class="text-center">
+                    <template v-for="eventCategory of unifiedUpcomingEvents">
+                        <tr>
+                            <td>{{eventCategory.category}}</td>
+                            <td>${{(eventCategory.price * eventCategory.assistance).toLocaleString("en-EN")}}</td>
+                            <td>{{(eventCategory.assistance / eventCategory.capacity * 100).toFixed(2)}}%</td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
             <table class="table align-middle">
@@ -101,12 +103,14 @@
                         <th scope="col" class="col-width">Percentage of assistance</th>
                     </tr>
                 </thead>
-                <tbody v-for="eventCategory of unifiedPastEvents" class="text-center">
-                    <tr>
-                        <td>{{eventCategory.category}}</td>
-                        <td>{{"$" + (eventCategory.price * eventCategory.assistance).toLocaleString("en-EN")}}</td>
-                        <td>{{(eventCategory.assistance / eventCategory.capacity * 100).toFixed(2)}}%</td>
-                    </tr>
+                <tbody class="text-center">
+                    <template v-for="eventCategory of unifiedPastEvents">
+                        <tr>
+                            <td>{{eventCategory.category}}</td>
+                            <td>${{(eventCategory.price * eventCategory.assistance).toLocaleString("en-EN")}}</td>
+                            <td>{{(eventCategory.assistance / eventCategory.capacity * 100).toFixed(2)}}%</td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
         </div>

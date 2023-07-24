@@ -14,15 +14,15 @@ const options = {
     },
     created(){
         fetch("https://mindhub-xj03.onrender.com/api/amazing")
-        .then(res => res.json())
-        .then(data => {
-            this.allEvents = data.events;
-            this.currentDate = data.currentDate;
-            this.upcomingEvents = this.allEvents.filter(event => event.date > this.currentDate);
-            this.filteredEvents = this.upcomingEvents;
-            this.uniqueEventCategories = Array.from(new Set(this.allEvents.map(event => event.category)))
-        })
-        .catch(error => console.error(error))
+            .then(res => res.json())
+            .then(data => {
+                this.allEvents = data.events;
+                this.currentDate = data.currentDate;
+                this.upcomingEvents = this.allEvents.filter(event => event.date > this.currentDate);
+                this.filteredEvents = this.upcomingEvents;
+                this.uniqueEventCategories = Array.from(new Set(this.allEvents.map(event => event.category)))
+            })
+            .catch(error => console.error(error))
     },
     methods:{
         filterByAll(){
@@ -37,8 +37,6 @@ const options = {
             this.searchValueSubmit = "";
         },
     },
-    computed:{
-    }
 }
 
 const app = createApp(options)
